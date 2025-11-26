@@ -1,10 +1,3 @@
-//
-//  LinkRitTests.swift
-//  LinkRitTests
-//
-//  Created by 牟禮優汰 on 2025/11/22.
-//
-
 import Testing
 @testable import LinkRit
 
