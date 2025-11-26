@@ -1,21 +1,33 @@
-//
-//  ContentView.swift
-//  LinkRit
-//
-//  Created by 牟禮優汰 on 2025/11/22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var selection = 1
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        TabView(selection: $selection) {
+            
+            HomeView()
+                .tabItem {
+                    Label("ホーム", systemImage: "house")
+                }
+                .tag(1)
+            
+            SearchView()
+                .tabItem {
+                    Label("検索", systemImage: "magnifyingglass")
+                }
+                .tag(2)
+            
+            UserView()
+                .tabItem {
+                    Label("プロフィール", systemImage: "person")
+                }
+                .tag(3)
+            
         }
-        .padding()
+        
     }
 }
 
