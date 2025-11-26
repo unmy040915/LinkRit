@@ -3,20 +3,18 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var vm = HomeViewModel()
     var body: some View {
         NavigationView{
-            
-            let event = ["NEXUS","watnow","ChatGPT","Google Assistant","Apple Siri"]
-            @State var searchText: String = ""
                 VStack{
                     
                     List{
-                        ForEach(event,id: \.self){ name in
+                        ForEach(vm.event,id: \.self){ name in
                             Text(name)
                             
                         }
                     }
-                    .searchable(text: $searchText,prompt:"検索")
+                    .searchable(text: $vm.searchText,prompt:"検索")
                     
                 }
                 .toolbar(content: {
@@ -24,10 +22,6 @@ struct HomeView: View {
                         Text("Link")
                             .font(.largeTitle)
                             .bold(true)
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing ){
-                        Image(systemName: "person.fill")
-                            .font(.title)
                     }
                     
                 })
