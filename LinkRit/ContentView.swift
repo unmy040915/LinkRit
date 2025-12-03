@@ -7,27 +7,16 @@ struct ContentView: View {
     var body: some View {
         
         TabView(selection: $selection) {
-            
-            HomeView()
-                .tabItem {
-                    Label("ホーム", systemImage: "house")
-                }
-                .tag(1)
-            
-            SearchView()
-                .tabItem {
-                    Label("検索", systemImage: "magnifyingglass")
-                }
-                .tag(2)
-            
-            UserView()
-                .tabItem {
-                    Label("プロフィール", systemImage: "person")
-                }
-                .tag(3)
-            
+            Tab ("ホーム", systemImage: "house",value: 0){
+                HomeView()
+            }
+            Tab ("検索", systemImage: "magnifyingglass",value: 1){
+                SearchView()
+            }
+            Tab ("プロフィール", systemImage: "person",value: 2){
+                UserView()
+            }
         }
-        
     }
 }
 
