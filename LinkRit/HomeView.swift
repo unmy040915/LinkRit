@@ -3,18 +3,18 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var vm = HomeViewModel()
+    @State private var viewModel = HomeViewModel()
     var body: some View {
         NavigationView{
                 VStack{
                     
                     List{
-                        ForEach(vm.event,id: \.self){ name in
+                        ForEach(viewModel.event,id: \.self){ name in
                             Text(name)
                             
                         }
                     }
-                    .searchable(text: $vm.searchText,prompt:"検索")
+                    .searchable(text: $viewModel.searchText,prompt:"検索")
                     
                 }
                 .toolbar(content: {
