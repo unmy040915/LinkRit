@@ -30,7 +30,13 @@ struct MBTIView: View {
                         .background(Color.black)
                         .foregroundStyle(vm.backgroundColor)
                         .cornerRadius(10)
+                        .padding()
                 }
+                Link("MBTIを受ける", destination: URL(string: "https://www.16personalities.com/ja/%E6%80%A7%E6%A0%BC%E8%A8%BA%E6%96%AD%E3%83%86%E3%82%B9%E3%83%88")!)
+                    .padding()
+                    .foregroundColor(vm.backgroundColor)
+                    .background(Color.black)
+                    .cornerRadius(10)
             }
         }
         
