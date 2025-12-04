@@ -9,7 +9,7 @@ struct HomeView: View {
                 VStack{
                     
                     List{
-                        ForEach(viewModel.event,id: \.self){ name in
+                        ForEach(viewModel.filteredEvents,id: \.self){ name in
                             Text(name)
                             
                         }
@@ -21,7 +21,7 @@ struct HomeView: View {
                     ToolbarItem(placement: .navigationBarLeading ){
                         Text("Link")
                             .font(.largeTitle)
-                            .bold(true)
+                            .bold()
                     }
                     
                 })
