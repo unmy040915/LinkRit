@@ -1,10 +1,3 @@
-//
-//  LinkRitUITests.swift
-//  LinkRitUITests
-//
-//  Created by 牟禮優汰 on 2025/11/22.
-//
-
 import XCTest
 
 final class LinkRitUITests: XCTestCase {

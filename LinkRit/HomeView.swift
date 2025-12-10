@@ -1,21 +1,21 @@
+
 import SwiftUI
 import Observation
 
 struct HomeView: View {
-
-    private var viewModel = HomeViewModel()
-
+    
+    @State var homeViewModel = HomeViewModel()
+    
     var body: some View {
-        @Bindable var bindableViewModel = viewModel
-
+        
         NavigationView {
             VStack {
                 List {
-                    ForEach(viewModel.filteredEvents, id: \.self) { name in
+                    ForEach(homeViewModel.state.filteredEvents, id: \.self) { name in
                         Text(name)
                     }
                 }
-                .searchable(text: $bindableViewModel.state.searchText,
+                .searchable(text: $homeViewModel.state.searchText,
                             prompt: "検索")
             }
             .toolbar {

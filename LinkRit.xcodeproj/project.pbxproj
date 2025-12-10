@@ -195,6 +195,9 @@
 			);
 			mainGroup = A5AF578C2ED0E8A600A3D575;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A53E5FCB2EE97295001AFB2B /* XCRemoteSwiftPackageReference "Auth0" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A5AF57962ED0E8A600A3D575 /* Products */;
 			projectDirPath = "";
@@ -558,6 +561,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A53E5FCB2EE97295001AFB2B /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.15.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = A5AF578D2ED0E8A600A3D575 /* Project object */;
 }
