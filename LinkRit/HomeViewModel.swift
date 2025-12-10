@@ -1,20 +1,22 @@
-
-import Foundation
 import Observation
-import SwiftUI
 
 @Observable
 class HomeViewModel {
-    
+
+    struct State {
+        var searchText: String = ""
+    }
+
+    // ← ViewModel 内に状態を保持
+    var state = State()
+
     let events = ["NEXUS","watnow","ChatGPT","Google Assistant","Apple Siri"]
-    var searchText: String = ""
+
     var filteredEvents: [String] {
-            if searchText.isEmpty {
-                return events
-            } else {
-                return events.filter { $0.localizedCaseInsensitiveContains(searchText) }
-            }
+        if state.searchText.isEmpty {
+            return events
+        } else {
+            return events.filter { $0.localizedCaseInsensitiveContains(state.searchText) }
         }
+    }
 }
-
-
