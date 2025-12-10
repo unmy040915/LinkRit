@@ -10,9 +10,8 @@ struct MBTIView: View {
                 Text("MBTIを選択")
                     .font(.system(size: 30))
                 Picker("", selection: $vm.selectionMBTI) {
-                    ForEach(vm.MBTIs){ MBTI in
-                        Text("\(MBTI.name)")
-                        
+                    ForEach(vm.mbtis, id: \.mbtiName) { mbti in
+                        Text(mbti.mbtiName)
                     }
                 }
                 .pickerStyle(.wheel)
