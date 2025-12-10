@@ -1,15 +1,32 @@
-//
-//  HomeView.swift
-//  LinkRit
-//
-//  Created by 牟禮優汰 on 2025/12/03.
-//
 
 import SwiftUI
+import Observation
 
 struct HomeView: View {
+    
+    @State var homeViewModel = HomeViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(homeViewModel.state.filteredEvents, id: \.self) { name in
+                        Text(name)
+                    }
+                }
+                .searchable(text: $homeViewModel.state.searchText,
+                            prompt: "検索")
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Link")
+                        .font(.largeTitle)
+                        .bold()
+                }
+            }
+        }
+        .scrollDismissesKeyboard(.immediately)
     }
 }
 
