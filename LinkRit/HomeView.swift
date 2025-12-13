@@ -1,6 +1,5 @@
 
 import SwiftUI
-import Observation
 
 struct HomeView: View {
     
@@ -10,13 +9,58 @@ struct HomeView: View {
         
         NavigationView {
             VStack {
-                List {
-                    ForEach(homeViewModel.state.filteredEvents, id: \.self) { name in
-                        Text(name)
+                List (homeViewModel.state.filteredEvents){event in
+                    VStack{
+                        Group{
+                            if let url = event.thumbnailUrl {
+                                AsyncImage(url: url) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                
+                            } else {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .frame(width: 360, height: 160)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        
+                        
+                        
+                        
+                        Text(event.title)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Text(event.eventDateText)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.caption)
+                        
+                        HStack{
+                            Spacer()
+                            ForEach(event.tags, id: \.self) { tag in
+                                Text("#\(tag)")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(1)
+                            
+                            
+                            
+                        }
+                        
+                        
                     }
                 }
-                .searchable(text: $homeViewModel.state.searchText,
-                            prompt: "検索")
+                .listStyle(.plain)
+                .searchable(text: $homeViewModel.state.searchText,prompt: "検索")
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -31,5 +75,12 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(
+        homeViewModel: HomeViewModel(
+            state: .init(
+                searchText: "",
+                events: [.mock]
+            )
+        )
+    )
 }
