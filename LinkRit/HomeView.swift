@@ -11,17 +11,34 @@ struct HomeView: View {
             VStack {
                 List (homeViewModel.state.filteredEvents){event in
                     VStack{
-                        AsyncImage(url: event.thumbnailUrl) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
+                        Group{
+                            if let url = event.thumbnailUrl {
+                                AsyncImage(url: url) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                
+                            } else {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.gray)
+                            }
                         }
-                        .frame(width: 360, height: 140)
-
-                            Text(event.title)
-                                .font(.headline)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-
+                        .frame(width: 360, height: 160)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        
+                        
+                        
+                        
+                        
+                        Text(event.title)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
                         Text(event.eventDateText)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.caption)
@@ -42,6 +59,7 @@ struct HomeView: View {
                         
                     }
                 }
+                .listStyle(.plain)
                 .searchable(text: $homeViewModel.state.searchText,prompt: "検索")
             }
             .toolbar {
