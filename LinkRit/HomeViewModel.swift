@@ -1,16 +1,26 @@
 import Observation
+import Foundation
 
 @Observable
 class HomeViewModel {
     struct State {
         var searchText: String = ""
-        let events = ["NEXUS","watnow","ChatGPT","Google Assistant","Apple Siri"]
-
-        var filteredEvents: [String] {
+        var events: [HomeModel] = []
+        var filteredEvents: [HomeModel] {
             if searchText.isEmpty {
                 return events
             } else {
-                return events.filter { $0.localizedCaseInsensitiveContains(searchText) }
+                return events.filter { event in
+                    // タイトルにヒット
+                    if event.title.localizedCaseInsensitiveContains(searchText) {
+                        return true
+                    }
+                    // タグのどれかにヒット
+                    if event.tags.contains(where: { $0.localizedCaseInsensitiveContains(searchText) }) {
+                        return true
+                    }
+                    return false
+                }
             }
         }
     }
