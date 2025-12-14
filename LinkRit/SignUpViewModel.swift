@@ -9,6 +9,7 @@ class SignUpViewModel {
         var password = ""
         var isLoading = false
         var errorMessage: String?
+        var name = ""
     }
     var state : State
     init(state: State = .init()) {
