@@ -1,6 +1,5 @@
 
 import SwiftUI
-import Observation
 
 struct HomeView: View {
     
@@ -10,13 +9,7 @@ struct HomeView: View {
         
         NavigationView {
             VStack {
-                List {
-                    ForEach(homeViewModel.state.filteredEvents, id: \.self) { name in
-                        Text(name)
-                    }
-                }
-                .searchable(text: $homeViewModel.state.searchText,
-                            prompt: "検索")
+                EventView()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -31,5 +24,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView( )
 }
