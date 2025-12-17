@@ -1,7 +1,7 @@
 import Foundation
 
 
-struct HomeModel: Identifiable, Hashable{
+struct EventModel: Identifiable, Hashable{
     var id: String { eventId }
     let eventId: String
     let thumbnailUrl: URL?
@@ -11,7 +11,7 @@ struct HomeModel: Identifiable, Hashable{
     let endDate: Date
     let note: String?
     let location: String?
-    let ApplicationURL: URL?
+    let EventSiteURL: URL?
     
     var eventDateText: String {
             let dateFormatter = DateFormatter()
@@ -25,8 +25,8 @@ struct HomeModel: Identifiable, Hashable{
                    "\(timeFormatter.string(from: endDate))"
         }
 }
-extension HomeModel {
-    static var mock = HomeModel(
+extension EventModel {
+    static var mock = EventModel(
         eventId: "mock_001",
         thumbnailUrl: URL(string: "https://plus.unsplash.com/premium_photo-1661306437817-8ab34be91e0c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8JUUzJTgyJUE0JUUzJTgzJTk5JUUzJTgzJUIzJUUzJTgzJTg4fGVufDB8fDB8fHww"),
         title: "NEXUS",
@@ -39,6 +39,6 @@ extension HomeModel {
         )!,
         note: "テスト",
         location: "OIC",
-        ApplicationURL: nil
+        EventSiteURL: nil
     )
 }
