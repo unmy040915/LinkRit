@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @State var userManager = UserManager()
+
     @State var signupViewModel = SignUpViewModel()
     var body: some View {
         VStack(spacing:40){
@@ -25,7 +25,7 @@ struct SignUpView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             Button {
-                userManager.signup(email: signupViewModel.state.email, password: signupViewModel.state.password, name: signupViewModel.state.name)
+                signupViewModel.login()
             } label: {
                 HStack {
                     if signupViewModel.state.isLoading { ProgressView().tint(.white) }

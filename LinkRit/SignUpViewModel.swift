@@ -12,7 +12,17 @@ class SignUpViewModel {
         var name = ""
     }
     var state : State
-    init(state: State = .init()) {
+    var userManager = UserManager()
+    init(
+        state: State = .init()
+    ) {
         self.state = state
     }
+    func login() {
+            state.isLoading = true
+            userManager.testlogin(
+                email: state.email,
+                password: state.password
+            )
+        }
 }

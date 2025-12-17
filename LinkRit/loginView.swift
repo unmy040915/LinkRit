@@ -4,7 +4,6 @@ import Auth0
 
 struct LoginView: View {
     @State var loginViewModel = LoginViewModel()
-    @State var userManager = UserManager()
 
     // 呼び出し側でログイン処理を差し替えられるようにする
     var onLogin: (_ email: String, _ password: String) async throws -> Void = { _, _ in }
@@ -57,7 +56,7 @@ struct LoginView: View {
 
                 // ログインボタン
                 Button {
-                    userManager.testlogin(email: loginViewModel.state.email, password: loginViewModel.state.password)
+                    loginViewModel.login()
                 } label: {
                     HStack {
                         if loginViewModel.state.isLoading { ProgressView().tint(.white) }
