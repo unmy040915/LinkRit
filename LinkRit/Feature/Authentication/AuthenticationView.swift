@@ -27,8 +27,18 @@ struct AuthenticationView: View {
                 )
             )
             
+        case .mbti:
+            MBTIView(
+                mbtiViewModel: MBTIViewModel(
+                    state: MBTIViewModel.State(
+                        viewMode: $authenticationViewModel.state.viewMode),
+                    dependency: MBTIViewModel.Dependency(
+                        userManager: authenticationViewModel.dependency.userManager)
+                )
+            )
+
         case .home:
-            HomeView()
+            ContentView()
         }
     }
 }

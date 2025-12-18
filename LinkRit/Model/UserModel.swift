@@ -3,8 +3,8 @@ import JWTDecode
 
 struct User {
     let link_user_code: String
-    let name: String
-    let mbti_type: String
+    var name: String
+    var mbti_type: String
 }
 
 extension User {

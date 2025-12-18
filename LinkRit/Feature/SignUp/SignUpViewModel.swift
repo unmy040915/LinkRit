@@ -24,9 +24,17 @@ class SignUpViewModel {
     }
 }
 extension SignUpViewModel {
-    func signup(email: String, password: String, name: String) {
-        state.isLoading = true
-        dependency.userManager.signup(email: email, password: password, name: name)
-        state.viewMode = .home
+    func signup(email: String, password: String, name: String) async {
+        do {
+            state.isLoading = true
+            try await dependency.userManager.signup(email: email, password: password, name: name)
+            state.viewMode = .mbti
+            state.isLoading = false
+        } catch {
+            state.errorMessage = error.localizedDescription
+            print(error.localizedDescription)
+            state.isLoading = false
+        }
+            
     }
 }
