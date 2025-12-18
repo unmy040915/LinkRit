@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		A5C170B32EED48050081A5E9 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = A5C170B22EED48050081A5E9 /* Auth0 */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		A5AF57A32ED0E8A800A3D575 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -56,7 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C170B32EED48050081A5E9 /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +112,6 @@
 			);
 			name = LinkRit;
 			packageProductDependencies = (
-				A5C170B22EED48050081A5E9 /* Auth0 */,
 			);
 			productName = LinkRit;
 			productReference = A5AF57952ED0E8A600A3D575 /* LinkRit.app */;
@@ -578,14 +572,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A5C170B22EED48050081A5E9 /* Auth0 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A53E5FCB2EE97295001AFB2B /* XCRemoteSwiftPackageReference "Auth0" */;
-			productName = Auth0;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A5AF578D2ED0E8A600A3D575 /* Project object */;
 }
