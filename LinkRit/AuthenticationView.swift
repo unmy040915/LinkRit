@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    var authenticationViewModel: AuthenticationViewModel
+    @State var authenticationViewModel: AuthenticationViewModel
     var body: some View {
         switch authenticationViewModel.state.viewMode {
         case .login:
             LoginView(loginViewModel: LoginViewModel(
-                state: LoginViewModel.State(),
+                state: LoginViewModel.State(viewMode: $authenticationViewModel.state.viewMode),
                 dependency: LoginViewModel.Dependency(userManager: authenticationViewModel.dependency.userManager))
             )
         case .signup:

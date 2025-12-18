@@ -1,4 +1,5 @@
 import Observation
+import SwiftUI
 import Auth0
 
 @Observable
@@ -12,13 +13,13 @@ class LoginViewModel {
         var password = ""
         var isLoading = false
         var errorMessage: String?
-        var viewMode: ViewDestination = .login
+        @Binding var viewMode: ViewDestination
     }
     
     var state: State
     let dependency: Dependency
     
-    init(state: State = .init(), dependency: Dependency) {
+    init(state: State, dependency: Dependency) {
         self.state = state
         self.dependency = dependency
     }

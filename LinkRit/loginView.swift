@@ -68,8 +68,7 @@ struct LoginView: View {
                     Text("アカウントを持っていない？")
                         .foregroundStyle(.secondary)
                     Button("新規登録") {
-                        
-                        
+                        loginViewModel.state.viewMode = .signup
                     }
                     .fontWeight(.semibold)
                 }
