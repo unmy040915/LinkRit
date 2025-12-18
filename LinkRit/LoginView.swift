@@ -3,7 +3,7 @@ import Auth0
 
 
 struct LoginView: View {
-    @State var loginViewModel = LoginViewModel()
+    @State var loginViewModel: LoginViewModel
 
     // 呼び出し側でログイン処理を差し替えられるようにする
 
@@ -73,8 +73,7 @@ struct LoginView: View {
                     Text("アカウントを持っていない？")
                         .foregroundStyle(.secondary)
                     Button("新規登録") {
-                        
-                        
+                        loginViewModel.state.viewMode = .signup
                     }
                     .fontWeight(.semibold)
                 }
@@ -92,7 +91,11 @@ struct LoginView: View {
 //    }
 }
 
-#Preview {
-    LoginView(
-    )
-}
+//#Preview {
+//    LoginView(
+//            loginViewModel: LoginViewModel(
+//                state: LoginViewModel.State(),
+//                dependency: LoginViewModel.Dependency(userManager: UserManager())
+//            )
+//        )
+//}

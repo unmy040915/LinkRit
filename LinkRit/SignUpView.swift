@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SignUpView: View {
 
-    @State var signupViewModel = SignUpViewModel()
+    @State var signupViewModel: SignUpViewModel
     var body: some View {
         VStack(spacing:40){
         Text("新規登録")
@@ -38,12 +38,23 @@ struct SignUpView: View {
             .buttonStyle(.borderedProminent)
             .disabled( signupViewModel.state.isLoading)
             Spacer()
+            HStack(spacing: 6) {
+                Text("アカウントを持っている？")
+                    .foregroundStyle(.secondary)
+                Button("ログイン") {
+                    signupViewModel.state.viewMode = .login
+                }
+                .fontWeight(.semibold)
+            }
+            .font(.footnote)
+            .padding(.bottom, 16)
+
         }
         .padding(.horizontal, 20)
         }
 
 }
 
-#Preview {
-    SignUpView()
-}
+//#Preview {
+//    SignUpView()
+//}
