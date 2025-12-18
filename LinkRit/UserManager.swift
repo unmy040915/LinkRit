@@ -16,29 +16,14 @@ class UserManager{
             .start { result in
                 switch result {
                 case .success(let credentials):
-                    print("Obtained credentials: \(credentials)")
+                    self.user = User.from(credentials.idToken)
+                    self.isAuthenticated = true
                 case .failure(let error):
                     print("Failed with: \(error)")
                 }
             }
     }
     func logout(email: String, password: String) {
-        Auth0
-            .authentication()
-            .login(usernameOrEmail: email,
-                   password: password,
-                   realmOrConnection: "Username-Password-Authentication",
-                   scope: "openid")
-            .start { result in
-                switch result {
-                case .success(let credentials):
-                    print("Session cookie cleared")
-                    self.isAuthenticated = false
-                    self.user = User.empty
-                case .failure(let error):
-                    print("Failed with: \(error.localizedDescription)")
-                }
-            }
     }
     func signup(email: String, password: String,name: String) {
         Auth0

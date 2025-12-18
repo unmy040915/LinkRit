@@ -48,7 +48,7 @@ struct LoginView: View {
                 
                 // ログインボタン
                 Button {
-                    loginViewModel.login()
+                    loginViewModel.login(email: loginViewModel.state.email, password: loginViewModel.state.password)
                 } label: {
                     HStack {
                         if loginViewModel.state.isLoading { ProgressView().tint(.white) }
@@ -81,11 +81,11 @@ struct LoginView: View {
     }
 }
 
-#Preview {
-    LoginView(
-        loginViewModel: LoginViewModel(
-            state: LoginViewModel.State(),
-            dependency: LoginViewModel.Dependency(userManager: UserManager())
-        )
-    )
-}
+//#Preview {
+//    LoginView(
+//        loginViewModel: LoginViewModel(
+//            state: LoginViewModel.State(),
+//            dependency: LoginViewModel.Dependency(userManager: UserManager())
+//        )
+//    )
+//}

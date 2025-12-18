@@ -1,9 +1,7 @@
-import Observation
 import SwiftUI
-import Auth0
 
 @Observable
-class LoginViewModel {
+class SignUpViewModel {
     struct Dependency {
         let userManager: UserManager
     }
@@ -13,6 +11,7 @@ class LoginViewModel {
         var password = ""
         var isLoading = false
         var errorMessage: String?
+        var name = ""
         @Binding var viewMode: ViewDestination
     }
     
@@ -24,13 +23,10 @@ class LoginViewModel {
         self.dependency = dependency
     }
 }
-
-extension LoginViewModel {
-    func login() {
+extension SignUpViewModel {
+    func signup(email: String, password: String, name: String) {
         state.isLoading = true
-        dependency.userManager.login(
-            email: state.email,
-            password: state.password
-        )
+        dependency.userManager.signup(email: email, password: password, name: name)
+        state.viewMode = .home
     }
 }

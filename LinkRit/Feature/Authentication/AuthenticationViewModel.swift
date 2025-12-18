@@ -19,9 +19,3 @@ class AuthenticationViewModel {
         self.dependency = dependency
     }
 }
-
-enum ViewDestination {
-    case login
-    case signup
-    case home
-}
