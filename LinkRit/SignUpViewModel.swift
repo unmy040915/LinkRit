@@ -18,11 +18,8 @@ class SignUpViewModel {
     ) {
         self.state = state
     }
-    func login() {
+    func signup() {
             state.isLoading = true
-            userManager.testlogin(
-                email: state.email,
-                password: state.password
-            )
+        userManager.signup(email: state.email,password: state.password, name: state.name)
         }
 }

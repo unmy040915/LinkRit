@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
     
     @State var selection = 1
-    @State var loginViewModel = LoginViewModel()
     var body: some View {
         TabView(selection: $selection) {
             Tab ("ホーム", systemImage: "house",value: 0){

@@ -6,7 +6,7 @@ import Auth0
 class UserManager{
     var isAuthenticated = false
     var user = User.empty
-    func testlogin(email: String, password: String) {
+    func login(email: String, password: String) {
         Auth0
             .authentication()
             .login(usernameOrEmail: email,
@@ -22,7 +22,7 @@ class UserManager{
                 }
             }
     }
-    func testlogout(email: String, password: String) {
+    func logout(email: String, password: String) {
         Auth0
             .authentication()
             .login(usernameOrEmail: email,

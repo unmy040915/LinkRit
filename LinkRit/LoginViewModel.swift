@@ -18,7 +18,7 @@ class LoginViewModel {
     }
     func login() {
             state.isLoading = true
-            userManager.testlogin(
+            userManager.login(
                 email: state.email,
                 password: state.password
             )

@@ -25,7 +25,7 @@ struct SignUpView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             Button {
-                signupViewModel.login()
+                signupViewModel.signup()
             } label: {
                 HStack {
                     if signupViewModel.state.isLoading { ProgressView().tint(.white) }

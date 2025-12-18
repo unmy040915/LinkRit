@@ -6,10 +6,7 @@ struct LoginView: View {
     @State var loginViewModel = LoginViewModel()
 
     // 呼び出し側でログイン処理を差し替えられるようにする
-    var onLogin: (_ email: String, _ password: String) async throws -> Void = { _, _ in }
-    var onContinueAsGuest: () -> Void = {}
-    var onTapSignUp: () -> Void = {}
-    var onTapForgotPassword: () -> Void = {}
+
 
     var body: some View {
         
@@ -44,7 +41,7 @@ struct LoginView: View {
 
                     HStack {
                         Button("パスワードを忘れた") {
-                            onTapForgotPassword()
+                            
                         }
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -76,7 +73,7 @@ struct LoginView: View {
                     Text("アカウントを持っていない？")
                         .foregroundStyle(.secondary)
                     Button("新規登録") {
-                        onTapSignUp()
+                        
                         
                     }
                     .fontWeight(.semibold)
@@ -97,19 +94,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView(
-        onLogin: { email, password in
-            // ダミー成功
-            try await Task.sleep(nanoseconds: 700_000_000)
-            print("login:", email, password)
-        },
-        onContinueAsGuest: {
-            print("guest")
-        },
-        onTapSignUp: {
-            print("signup")
-        },
-        onTapForgotPassword: {
-            print("forgot")
-        }
     )
 }
