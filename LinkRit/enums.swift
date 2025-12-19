@@ -1,0 +1,31 @@
+//
+//  enums.swift
+//  LinkRit
+//
+//  Created by 牟禮優汰 on 2025/12/19.
+//
+
+import Foundation
+enum FaculityType: String, Codable{
+    case FacultyofLaw = "法学部"
+    case SocialSciences = "産業社会学部"
+    case Letters = "文学部"
+    case ImageArtsandSciences = "映像学部"
+    case BusinessAdministration = "経営学部"
+    case PolicyScience = "政策科学部"
+    case ComprehensivePsychology = "総合心理学部"
+    case GlobalLiberalArts = "グローバル教養学部"
+    case Economics = "経済学部"
+    case SportandHealthScience = "スポーツ健康学部"
+    case GastronomyManagement = "食マネジメント学部"
+    case ScienceandEngineering = "理工学部"
+    case LifeSciences = "生命科学部"
+    case PharmaceuticalSciences = "薬学部"
+}
+
+enum ViewDestination{
+    case login
+    case signup
+    case home
+    case mbti
+}
