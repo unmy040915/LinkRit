@@ -14,7 +14,9 @@ struct RootView: View {
                             state: SignUpViewModel.State(viewMode: $rootViewModel.state.ViewMode),
                             dependency: SignUpViewModel.Dependency(userManager: rootViewModel.dependency.userManager)))
         case .home:
-            HomeView()
+            ContentView()
+        case .mbti:
+            MBTIView(mbtiViewModel: MBTIViewModel(state: MBTIViewModel.State(viewMode: $rootViewModel.state.ViewMode),dependency: MBTIViewModel.Dependency(userManager: rootViewModel.dependency.userManager)))
         }
     }
 }

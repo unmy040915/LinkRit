@@ -4,15 +4,15 @@ import Auth0
 
 struct LoginView: View {
     @State var loginViewModel: LoginViewModel
-
+    
     // 呼び出し側でログイン処理を差し替えられるようにする
-
-
+    
+    
     var body: some View {
         
         NavigationStack {
             VStack(spacing: 20) {
-
+                
                 // ロゴ/アプリ名（純正っぽく文字だけ）
                 VStack(spacing: 8) {
                     Image(systemName: "link")
@@ -21,7 +21,7 @@ struct LoginView: View {
                         .font(.largeTitle.bold())
                 }
                 .padding(.top, 24)
-
+                
                 // 入力フォーム（純正っぽく Form ではなく角丸グループ）
                 VStack(spacing: 12) {
                     TextField("メールアドレス", text: $loginViewModel.state.email)
@@ -32,28 +32,30 @@ struct LoginView: View {
                         .padding(12)
                         .background(.thinMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
-
+                    
                     SecureField("パスワード", text: $loginViewModel.state.password)
                         .textContentType(.password)
                         .padding(12)
                         .background(.thinMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
-
+                    
                     HStack {
                         Button("パスワードを忘れた") {
                             
                         }
                         .font(.footnote)
                         .foregroundStyle(.secondary)
-
+                        
                         Spacer()
                     }
                 }
                 .padding(.top, 8)
-
+                
                 // ログインボタン
                 Button {
-                    loginViewModel.login()
+                    Task {
+                        await loginViewModel.login(email: loginViewModel.state.email, password: loginViewModel.state.password)
+                    }
                 } label: {
                     HStack {
                         if loginViewModel.state.isLoading { ProgressView().tint(.white) }
@@ -65,9 +67,9 @@ struct LoginView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled( loginViewModel.state.isLoading)
-
+                
                 Spacer()
-
+                
                 // サインアップ導線
                 HStack(spacing: 6) {
                     Text("アカウントを持っていない？")
@@ -84,11 +86,11 @@ struct LoginView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-
-//    private var canSubmit: Bool {
-//        !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-//        !password.isEmpty
-//    }
+    
+    //    private var canSubmit: Bool {
+    //        !email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+    //        !password.isEmpty
+    //    }
 }
 
 //#Preview {

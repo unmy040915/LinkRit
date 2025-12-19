@@ -23,13 +23,23 @@ struct SignUpView: View {
                     .padding(12)
                     .background(.thinMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
+                TextField("名前", text: $signupViewModel.state.name)
+                                    .textInputAutocapitalization(.never)
+                                    .autocorrectionDisabled()
+                                    .keyboardType(.emailAddress)
+                                    .textContentType(.username)
+                                    .padding(12)
+                                    .background(.thinMaterial)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             Button {
-                signupViewModel.signup()
+                Task {
+                    await signupViewModel.signup(email: signupViewModel.state.email, password: signupViewModel.state.email, name: signupViewModel.state.name)
+                }
             } label: {
                 HStack {
                     if signupViewModel.state.isLoading { ProgressView().tint(.white) }
-                    Text(signupViewModel.state.isLoading ? "ログイン中…" : "サインアップ")
+                    Text(signupViewModel.state.isLoading ? "サインアップ中…" : "サインアップ")
                         .fontWeight(.semibold)
                 }
                 .frame(maxWidth: .infinity)

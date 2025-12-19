@@ -23,11 +23,19 @@ class LoginViewModel {
     
 }
 extension LoginViewModel {
-    func login() {
-        state.isLoading = true
-        dependency.userManager.login(
-            email: state.email,
-            password: state.password
-        )
+    func login(email: String, password: String) async {
+        do {
+            state.isLoading = true
+            try await dependency.userManager.login(
+                email: email,
+                password: password
+            )
+            state.viewMode = .mbti
+            state.isLoading = false
+        } catch {
+            state.errorMessage = error.localizedDescription
+            print(error.localizedDescription)
+            state.isLoading = false
+        }
     }
 }
