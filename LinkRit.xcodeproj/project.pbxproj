@@ -87,11 +87,11 @@
 		A5AF578C2ED0E8A600A3D575 = {
 			isa = PBXGroup;
 			children = (
-				A5AF57972ED0E8A600A3D575 /* LinkRit */,
 				A5AF57A52ED0E8A800A3D575 /* LinkRitTests */,
 				A5AF57AF2ED0E8A800A3D575 /* LinkRitUITests */,
 				8CC87C5C2EF4162C0060D789 /* Frameworks */,
 				A5AF57962ED0E8A600A3D575 /* Products */,
+				A5AF57972ED0E8A600A3D575 /* LinkRit */,
 			);
 			sourceTree = "<group>";
 		};

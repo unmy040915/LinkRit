@@ -14,8 +14,23 @@ class HomeViewModel {
             }
         }
     }
-    var state : State
-    init(state: State = .init()) {
-        self.state = state
+    
+    struct Dependency {
+        let apiClient: APIClient
+        let eventRepository: EventRepository
     }
+    
+    var state : State
+    var dependency: Dependency
+    
+    init(state: State = .init(), dependency: Dependency) {
+        self.state = state
+        self.dependency = dependency
+    }
+    
+    func fetcnEvents() async throws -> [Event] {
+        let events = dependency.eventRepository.fetchEvents()
+        return events
+    }
+    
 }
